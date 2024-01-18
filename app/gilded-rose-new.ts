@@ -40,7 +40,7 @@ export class GildedRose {
           ProductUpdater.increaseQuality(item, {
             number: brieIncrement,
           });
-         ProductUpdater.decreaseSellIn(item);
+
           break;
         case "Backstage passes to a TAFKAL80ETC concert":
           const number =
@@ -54,19 +54,21 @@ export class GildedRose {
           if (number === 0) {
            ProductUpdater.dropQuality(item);
           } else {
-           ProductUpdater.increaseQuality(item, { number});
+           ProductUpdater.increaseQuality(item, { number });
           }
-         ProductUpdater.decreaseSellIn(item);
+
           break;
         case "Conjured Mana Cake":
          //@Todo let decreaseQuality handle decrementing value based on product type
          ProductUpdater.decreaseQuality(item, { number: 2});
-         ProductUpdater.decreaseSellIn(item);
           break;
         default:
          ProductUpdater.decreaseQuality(item, { number: 1});
-         ProductUpdater.decreaseSellIn(item);
       }
+      if(item.name !== "Sulfuras, Hand of Ragnaros") {
+        ProductUpdater.decreaseSellIn(item);
+      }
+  
     });
 
     return this.items;
