@@ -18,7 +18,7 @@ const dataSet = {};
 
 for(let i = 0; i < config.days; i++) {
   console.log(i, gildedRose.items);
-  gildedRose.updateQuality();
+  gildedRose.updateProduct();
 
   let copy = JSON.parse(JSON.stringify(gildedRose.items));
   dataSet[i] = copy;
